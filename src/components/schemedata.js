@@ -1,0 +1,123 @@
+export const schemesData = [
+  {
+    id: 1,
+    name: "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+    description: "Provides direct income support of ₹6,000 per year to farmers.",
+    link: "https://pmkisan.gov.in/",
+  },
+  {
+    id: 2,
+    name: "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    description: "Crop insurance scheme to protect farmers from yield losses.",
+    link: "https://pmfby.gov.in/",
+  },
+  {
+    id: 3,
+    name: "Kisan Credit Card (KCC)",
+    description: "Provides farmers with affordable credit for agricultural needs.",
+    link: "https://www.nabard.org/content1.aspx?id=23&catid=23&mid=530",
+  },
+  {
+    id: 4,
+    name: "Rashtriya Krishi Vikas Yojana (RKVY)",
+    description: "Aims to promote agricultural development and productivity.",
+    link: "https://rkvy.nic.in/",
+  },
+  {
+    id: 5,
+    name: "Soil Health Card Scheme",
+    description: "Provides soil quality assessment to improve productivity.",
+    link: "https://soilhealth.dac.gov.in/",
+  },
+  {
+    id: 6,
+    name: "Paramparagat Krishi Vikas Yojana (PKVY)",
+    description: "Promotes organic farming and sustainable agriculture.",
+    link: "https://pgsindia-ncof.gov.in/",
+  },
+  {
+    id: 7,
+    name: "National Food Security Mission (NFSM)",
+    description: "Ensures food security by increasing crop production.",
+    link: "https://nfsm.gov.in/",
+  },
+  {
+    id: 8,
+    name: "E-NAM (National Agriculture Market)",
+    description: "Online trading platform for agricultural commodities.",
+    link: "https://enam.gov.in/",
+  },
+  {
+    id: 9,
+    name: "Agri-Clinics and Agri-Business Centers (ACABC)",
+    description: "Supports entrepreneurs in agriculture.",
+    link: "https://www.agriclinics.net/",
+  },
+  {
+    id: 10,
+    name: "PM Kusum Scheme",
+    description: "Encourages solar power for irrigation.",
+    link: "https://mnre.gov.in/solar/schemes/pm-kusum",
+  },
+  {
+    id: 11,
+    name: "National Mission for Sustainable Agriculture (NMSA)",
+    description: "Focuses on climate-resilient agriculture.",
+    link: "https://nmsa.gov.in/",
+  },
+  {
+    id: 12,
+    name: "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+    description: "Promotes irrigation and water conservation.",
+    link: "https://pmksy.gov.in/",
+  },
+  {
+    id: 13,
+    name: "Gramin Bhandaran Yojana",
+    description: "Supports the construction of warehouses for farmers.",
+    link: "https://agricoop.nic.in/PolicyIncentives/gramin-bhandaran-yojana",
+  },
+  {
+    id: 14,
+    name: "Integrated Scheme for Agricultural Marketing (ISAM)",
+    description: "Improves post-harvest management.",
+    link: "https://agricoop.nic.in/en/Policies/isam",
+  },
+  {
+    id: 15,
+    name: "National Mission on Horticulture",
+    description: "Promotes the cultivation of horticultural crops.",
+    link: "https://nhb.gov.in/",
+  },
+  {
+    id: 16,
+    name: "Micro Irrigation Fund (MIF)",
+    description: "Supports micro-irrigation techniques.",
+    link: "https://pmksy.gov.in/microirrigation/",
+  },
+  {
+    id: 17,
+    name: "Sub-Mission on Agricultural Mechanization (SMAM)",
+    description: "Promotes mechanization of farming activities.",
+    link: "https://agricoop.nic.in/en/Policies/smam",
+  },
+  {
+    id: 18,
+    name: "National Mission on Oilseeds and Oil Palm",
+    description: "Encourages oilseed and palm cultivation.",
+    link: "https://nmoop.gov.in/",
+  },
+  {
+    id: 19,
+    name: "Livestock Insurance Scheme",
+    description: "Provides insurance coverage for cattle and livestock.",
+    link: "https://dahd.nic.in/schemes-programmes/livestock-insurance",
+  },
+  {
+    id: 20,
+    name: "National Bee Board (NBB)",
+    description: "Encourages beekeeping and honey production.",
+    link: "https://nbb.gov.in/",
+  },
+  // Add more schemes if needed...
+];

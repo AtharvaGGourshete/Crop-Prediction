@@ -57,7 +57,6 @@ const LandingPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <Sidebar />
       <div className={`${isOpen ? "w-3/4" : "w-full"}`}>
         <Aurora
           colorStops={["#287050", "#287050", "#287050"]}

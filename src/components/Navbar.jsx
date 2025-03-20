@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import BlurText from "./ui/BlurText";
+
 import {
   SignedIn,
   SignedOut,
@@ -11,6 +12,20 @@ import {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <>
       
@@ -20,7 +35,11 @@ const Navbar = () => {
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet"
       />{" "}
-      <nav className={`h-16 px-5 flex items-center justify-between text-xl z-10`}>
+      <nav className={`fixed top-0 left-0 w-full h-16 px-5 flex items-center justify-between text-xl z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-opacity-50 backdrop-blur-lg shadow-md" // Glass effect when scrolled
+            : "bg-transparent"
+        }`}>
         {/* Logo on the left */}
         <div className={`${isOpen ? "ml-10" : null}`}>
           <Link to="/"> 
@@ -67,6 +86,7 @@ const Navbar = () => {
           </Button>
         </Link>
       </nav>
+      <hr className="opacity-20"/>
     </>
   );
 };

@@ -57,7 +57,7 @@ const LandingPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className={`${isOpen ? "w-3/4" : "w-full"}`}>
+      <div className=''>
         <Aurora
           colorStops={["#287050", "#287050", "#287050"]}
           blend={1}

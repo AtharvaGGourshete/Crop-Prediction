@@ -8,7 +8,7 @@ const AppLayout = () => {
   return (
     <div>
       
-      <main className="min-h-screen w-full container bg-[#101010] text-white">
+      <main className="min-h-screen min-w-full container bg-[#101010] text-white">
         <Navbar/>
         <Outlet />
       </main>

@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import AboutUs from "./pages/AboutUs";
 import Schemes from "./pages/Schemes";
 import Dashboard from "./pages/Dashboard";
+import Form from "./pages/Form";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,14 @@ function App() {
         {
            path: "/schemes",
            element: <Schemes/> 
+        },
+        {
+           path: "/dashboard",
+           element: <Dashboard /> 
+        },
+        {
+           path: "/form",
+           element: <Form /> 
         },
         {
            path: "/dashboard",

@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner"
 const AppLayout = () => {
   return (
     <div>
+      
       <main className="min-h-screen w-full container bg-[#101010] text-white">
         <Navbar/>
         <Outlet />

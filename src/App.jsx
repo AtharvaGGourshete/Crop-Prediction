@@ -8,6 +8,7 @@ import Schemes from "./pages/Schemes";
 import Dashboard from "./pages/Dashboard";
 import Marketplace from "./pages/Marketplace";
 import PremiumPlans from "./pages/PremiumPlans";
+import Products from "./pages/Products";
 import Form from "./pages/Form";
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
           path: "/premiumplans",
           element: <PremiumPlans />,
         },
+        {
+          path: "/products",
+          element: <Products />,
+        }
       ],
     },
   ]);

@@ -11,6 +11,7 @@ import {
   Legend,
 } from 'recharts';
 import useCropData from '../hooks/useCropData';
+import { Button } from '@/components/ui/button';
 
 const Dashboard = () => {
   const { state } = useLocation();
@@ -18,7 +19,7 @@ const Dashboard = () => {
   const { soilType, location, month, area } = state || {};
   const { data, loading } = useCropData(location);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className='mt-20 text-center text-2xl mt-60 text-red-500'>Loading...</div>;
   if (!data.length) return (<><div className='mt-20 text-center text-2xl mt-60 text-red-500'><span className='block'>Fill the form to access the dashboard</span>
   <Link to={"/form"}><span className='text-gray-400 hover:text-gray-300  hover:underline'>click here to fill the form</span></Link></div></>);
 
@@ -50,13 +51,14 @@ const Dashboard = () => {
   });
 
   return (
-    <div className='mt-20'>
-      <h1>Dashboard</h1>
-      <h2>Top 2 Highest Priced Crops in {location}</h2>
-
+    <div className='px-20 mt-20'>
+      <div className='flex justify-center'>
+      <span className='text-3xl font-bold'>Top 2 Highest Priced Crops in {location}</span>
+      </div>
+      <div className='grid grid-cols-2 justify-center'>
       {topTwoCrops.map((crop, index) => (
-        <div key={index} style={{ marginBottom: '20px' }}>
-          <h3>Crop {index + 1}</h3>
+        <div key={index} className='mb-20 grid justify-center mt-10 '>
+          <h3 className='font-extrabold text-2xl'>Crop {index + 1}</h3>
           <p>
             Commodity: {crop.Commodity} <br />
             Market: {crop.Market} <br />
@@ -69,8 +71,9 @@ const Dashboard = () => {
           </p>
         </div>
       ))}
-
-      <h2>Price Comparison</h2>
+      </div>
+      <h1 className='text-center text-2xl'>Price Comparison</h1>
+      <div className='flex justify-center'>
       <LineChart
         key={location}
         width={600}
@@ -91,6 +94,7 @@ const Dashboard = () => {
           name="Crop Price"
         />
       </LineChart>
+      </div>
       <div className="flex justify-center mt-40">
         <span className="text-5xl">Explore Premium Plans</span>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import supabase from "@/config/supabase"; // Ensure this is correctly set up
 
 const Form = () => {
@@ -18,11 +18,9 @@ const Form = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate('/dashboard', { state: formData });
+    navigate("/dashboard", { state: formData });
     setLoading(true);
     setMessage("");
 
@@ -48,7 +46,6 @@ const Form = () => {
         month: "",
         area: "",
       });
-
     } catch (error) {
       setMessage(`Error: ${error.message}`);
     } finally {
@@ -113,7 +110,7 @@ const Form = () => {
               required
             >
               <option value="">Select Month</option>
-              {[  
+              {[
                 "January",
                 "February",
                 "March",

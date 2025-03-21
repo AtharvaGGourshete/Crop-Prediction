@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import supabase from "@/config/supabase"; // Ensure this is correctly set up
 
 const Form = () => {
@@ -9,7 +10,7 @@ const Form = () => {
     month: "",
     area: "",
   });
-
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -17,8 +18,11 @@ const Form = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    navigate('/dashboard', { state: formData });
     setLoading(true);
     setMessage("");
 

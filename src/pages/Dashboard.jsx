@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   LineChart,
   Line,
@@ -9,99 +9,88 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
-} from "recharts";
-
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  { 
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+} from 'recharts';
+import useCropData from '../hooks/useCropData';
 
 const Dashboard = () => {
+  const { state } = useLocation();
+  console.log('Form Data:', state); // Debug form input
+  const { soilType, location, month, area } = state || {};
+  const { data, loading } = useCropData(location);
+
+  if (loading) return <div>Loading...</div>;
+  if (!data.length) return (<><div className='mt-20 text-center text-2xl mt-60 text-red-500'><span className='block'>Fill the form to access the dashboard</span>
+  <Link to={"/form"}><span className='text-gray-400 hover:text-gray-300  hover:underline'>click here to fill the form</span></Link></div></>);
+
+  // Get the top 2 highest-priced crops
+  const sortedCrops = [...data]
+    .map((item) => ({
+      ...item,
+      Modal_x0020_Price: parseFloat(item.Modal_x0020_Price) || 0,
+    }))
+    .sort((a, b) => b.Modal_x0020_Price - a.Modal_x0020_Price);
+  console.log('Sorted Crops:', sortedCrops);
+  const topTwoCrops = sortedCrops.slice(0, 2);
+  console.log('Top 2 Crops:', topTwoCrops);
+
+  // Prepare data for the LineChart
+  const chartData = topTwoCrops.map((crop) => ({
+    name: `${crop.Commodity} (${crop.Market})`,
+    price: crop.Modal_x0020_Price,
+  }));
+  console.log('Chart Data:', chartData);
+
+  // Dummy profitability calculation
+  const baseCostPerUnitArea = 1000;
+  const profitabilityData = topTwoCrops.map((crop) => {
+    const totalRevenue = crop.Modal_x0020_Price * area;
+    const totalCost = baseCostPerUnitArea * area;
+    const profit = totalRevenue - totalCost;
+    return ((profit / totalCost) * 100).toFixed(2);
+  });
+
   return (
-    <div className="px-20 mt-20">
-      <div className="grid grid-cols-2 gap-5">
-        {/* Chart Container */}
-        <div className="bg-[#161616] h-auto w-full p-5 rounded-lg">
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart
-              width={500}
-              height={300}
-              data={data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="pv"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-            </LineChart>
-          </ResponsiveContainer>
-          <div className="text-center font-bold text-4xl">
-            <span>Predicted Price</span>
-          </div>
-        </div>
+    <div className='mt-20'>
+      <h1>Dashboard</h1>
+      <h2>Top 2 Highest Priced Crops in {location}</h2>
 
-        {/* Dynamic Height Container */}
-        <div className="bg-[#161616] h-auto w-full p-5 rounded-lg">
-          
+      {topTwoCrops.map((crop, index) => (
+        <div key={index} style={{ marginBottom: '20px' }}>
+          <h3>Crop {index + 1}</h3>
+          <p>
+            Commodity: {crop.Commodity} <br />
+            Market: {crop.Market} <br />
+            Price: ₹{crop.Modal_x0020_Price} <br />
+            Location: {location} <br />
+            Soil Type: {soilType} <br />
+            Month: {month} <br />
+            Area: {area} sq. units <br />
+            Profitability: {profitabilityData[index]}%
+          </p>
         </div>
-      </div>
-      <div className="w-full h-96 bg-[#161616] mt-5 ">
+      ))}
 
-      </div>
+      <h2>Price Comparison</h2>
+      <LineChart
+        key={location}
+        width={600}
+        height={300}
+        data={chartData}
+        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis label={{ value: 'Price (₹)', angle: -90, position: 'insideLeft' }} />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="price"
+          stroke="#8884d8"
+          activeDot={{ r: 8 }}
+          name="Crop Price"
+        />
+      </LineChart>
       <div className="flex justify-center mt-40">
         <span className="text-5xl">Explore Premium Plans</span>
       </div>
@@ -113,4 +102,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

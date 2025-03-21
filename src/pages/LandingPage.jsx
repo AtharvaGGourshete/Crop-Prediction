@@ -14,6 +14,7 @@ import Sidebar from "@/components/Sidebar";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { Link } from "react-router-dom";
 
+
 const features = [
   {
     icon: <BrainCircuit />,
@@ -55,6 +56,7 @@ const features = [
 
 const LandingPage = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <>
       <div className=''>
@@ -103,6 +105,7 @@ const LandingPage = () => {
         </div>
         <div className="-mt-32 ml-72">
         <Link to={"/form"}><InteractiveHoverButton className="bg-[#287050]">Get Recommendations</InteractiveHoverButton></Link></div>
+        
         <div className="relative mt-56 border-b border-neutral-800 min-h-[800px]">
           <div className="text-center">
             

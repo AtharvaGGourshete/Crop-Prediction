@@ -95,6 +95,12 @@ const Navbar = () => {
           >
             Dashboard
           </Link>
+          <Link
+            to={"/marketplace"}
+            className="cursor-pointer text-gray-300  hover:text-green-400"
+          >
+            Marketplace
+          </Link>
         </div>
 
         {/* Button on the right */}

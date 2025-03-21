@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import AppLayout from "./layouts/app-layout";
@@ -7,42 +7,58 @@ import AboutUs from "./pages/AboutUs";
 import Schemes from "./pages/Schemes";
 import Dashboard from "./pages/Dashboard";
 import Form from "./pages/Form";
+import Marketplace from "./pages/Marketplace";
+import PremiumPlans from "./pages/PremiumPlans";
 
 function App() {
+  
+
   const router = createBrowserRouter([
     {
       element: <AppLayout />,
       children: [
         {
-           path: "/",
-           element: <LandingPage /> 
+          path: "/",
+          element: <LandingPage />,
         },
         {
-           path: "/aboutus",
-           element: <AboutUs /> 
+          path: "/aboutus",
+          element: <AboutUs />,
         },
         {
-           path: "/schemes",
-           element: <Schemes/> 
+          path: "/schemes",
+          element: <Schemes />,
         },
         {
-           path: "/dashboard",
-           element: <Dashboard /> 
+          path: "/dashboard",
+          element: <Dashboard />,
         },
         {
-           path: "/form",
-           element: <Form /> 
+          path: "/form",
+          element: <Form />,
         },
         {
-           path: "/dashboard",
-           element: <Dashboard /> 
+          path: "/dashboard",
+          element: <Dashboard />,
         },
-        
+        {
+          path: "/marketplace",
+          element: <Marketplace />,
+        },
+        {
+          path: "/premiumplans",
+          element: <PremiumPlans />,
+        },
       ],
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      
+    </>
+  );
 }
 
 export default App;

@@ -19,6 +19,9 @@ const Footer = () => {
           <Link to="/dashboard" className="hover:text-[#287050] transition">
             Dashboard
           </Link>
+          <Link to="/marketplace" className="hover:text-[#287050] transition">
+            Marketplace
+          </Link>
         </div>
 
         {/* Copyright */}

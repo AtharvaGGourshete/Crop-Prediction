@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/button";
 import React, { PureComponent } from "react";
+import { Link } from "react-router-dom";
 import {
   LineChart,
   Line,
@@ -60,7 +62,7 @@ const Dashboard = () => {
     <div className="px-20 mt-20">
       <div className="grid grid-cols-2 gap-5">
         {/* Chart Container */}
-        <div className="bg-gray-900 h-auto w-full p-5 rounded-lg">
+        <div className="bg-[#161616] h-auto w-full p-5 rounded-lg">
           <ResponsiveContainer width="100%" height={300}>
             <LineChart
               width={500}
@@ -93,12 +95,18 @@ const Dashboard = () => {
         </div>
 
         {/* Dynamic Height Container */}
-        <div className="bg-gray-900 h-auto w-full p-5 rounded-lg">
+        <div className="bg-[#161616] h-auto w-full p-5 rounded-lg">
           
         </div>
       </div>
-      <div className="w-full h-96 bg-gray-900 mt-5 rounded-lg">
+      <div className="w-full h-96 bg-[#161616] mt-5 ">
 
+      </div>
+      <div className="flex justify-center mt-40">
+        <span className="text-5xl">Explore Premium Plans</span>
+      </div>
+      <div className="mt-5 flex justify-center">
+        <Link to={"/premiumplans"}><Button className="bg-green-600 mb-40 cursor-pointer">Upgrade to Premium</Button></Link>
       </div>
     </div>
   );
